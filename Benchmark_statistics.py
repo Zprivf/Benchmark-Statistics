@@ -10,19 +10,26 @@ from datetime import date
 pd.options.mode.chained_assignment = None
 
 def stat_eval_at_point(file1_path,file2_path):
+    lower_date=pd.to_datetime('1980-10-01')
+    upper_date=pd.to_datetime('2020-09-30')
     df1_r = pd.read_csv(file1_path)
-    df2_r = pd.read_csv(file2_path)
-    df1_r_name = df1_r.columns[1]
+    df2_r = pd.read_csv(file2_path,encoding='latin1')
+    df1_r['Datetime']=pd.to_datetime(df1_r['Datetime'])
+    df1_r['Datetime']=df1_r['Datetime'].dt.strftime('%Y-%m-%d')
+    df2_r['Datetime']=pd.to_datetime(df2_r['Datetime'])
+    df2_r['Datetime']=df2_r['Datetime'].dt.strftime('%Y-%m-%d')
+    df1_r = pd.DataFrame(df1_r)
+    df2_r = pd.DataFrame(df2_r)
+    df1_r_name = df1_r.columns[6]
     df2_r_name = df2_r.columns[1]
-#     data_1=df1_r.iloc[:, 1] 
-#     data_2=df2_r.iloc[:, 1] 
-    df=pd.merge(df1_r, df2_r,on=df1_r.iloc[:, 0])
-    df.dropna(axis=0, inplace=True)
+    df=pd.merge(left=df1_r, right=df2_r,on='Datetime',how='inner')
+    df.dropna ()
     data_1=df[df1_r_name]
     data_2=df[df2_r_name]
     nse_cpc=he.evaluator(he.nse,data_1,data_2)
     kge_cpc, r_cpc, alpha_cpc, beta_cpc = he.evaluator(he.kge, data_1,data_2)
-    print("data 1 vs data 2","NSE=",nse_cpc,"KGE=",kge_cpc, "r=",r_cpc)
+    print("NWM vs USGS","NSE=",nse_cpc,"KGE=",kge_cpc, "r=",r_cpc)
+    
     return
     
 
