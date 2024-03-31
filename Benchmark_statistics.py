@@ -56,7 +56,7 @@ def Get_USGS_and_compute_statistics(siteID,startDate,endDate,NWM_data_path):
     df2_r = usgs_df                # USGS from nwis
 
 
-    df1_r['Datetime']=pd.to_datetime(df1_r['Datetime'],format='%m/%d/%Y')
+    df1_r['Datetime']=pd.to_datetime(df1_r['Datetime'])#,format='%m/%d/%Y')
     df1_r['Datetime']=df1_r['Datetime'].dt.strftime('%Y-%m-%d')
     df2_r['Datetime']=pd.to_datetime(df2_r['Datetime'])
     df2_r['Datetime']=df2_r['Datetime'].dt.strftime('%Y-%m-%d')
