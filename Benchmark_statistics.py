@@ -37,7 +37,7 @@ def stat_eval_at_point(file1_path,file2_path):
     
     return
 
-# Set the parameters needed for the web service call
+
 
 def Get_USGS_and_compute_statistics(siteID,startDate,endDate,NWM_data_path):
     # Get the data
