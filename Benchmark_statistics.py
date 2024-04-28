@@ -34,6 +34,8 @@ def stat_eval_at_point(file1_path,file2_path):
     nse_cpc=he.evaluator(he.nse,data_1,data_2)
     kge_cpc, r_cpc, alpha_cpc, beta_cpc = he.evaluator(he.kge, data_1,data_2)
     print("NWM vs USGS","NSE=",nse_cpc,"KGE=",kge_cpc, "r=",r_cpc)
+    pbias = he.pbias(np.array(data_1),np.array(data_2))
+    print(f"Percent Bias (PBIAS): {pbias:.2f}%")
     
     return
 
@@ -75,4 +77,6 @@ def Get_USGS_and_compute_statistics(siteID,startDate,endDate,NWM_data_path):
     nse_cpc=he.evaluator(he.nse,data_1,data_2)
     kge_cpc, r_cpc, alpha_cpc, beta_cpc = he.evaluator(he.kge, data_1,data_2)
     print("data 1 (NWM) vs USGS","NSE=",nse_cpc,"KGE=",kge_cpc, "r=",r_cpc)
+    pbias = he.pbias(np.array(data_1),np.array(data_2))
+    print(f"Percent Bias (PBIAS): {pbias:.2f}%")
     return
