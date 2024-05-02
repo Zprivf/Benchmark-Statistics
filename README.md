@@ -1,4 +1,4 @@
-Hydro-Benchmark: Python Benchmarking Tool for Hydrological Models
+Benchmark-Statistics: Python Benchmarking Tool for Hydrological Models
 Welcome to Hydro-Benchmark, a comprehensive Python library dedicated to the evaluation of hydrological models. This repository provides Python code to compute benchmark statistics including Pearson’s correlation coefficient r, Nash-Sutcliffe Efficiency (NSE), Kling-Gupta Efficiency (KGE), and Percent Bias (PBIAS).
 
 Features
